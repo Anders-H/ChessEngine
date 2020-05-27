@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ApplicationIcon>chess.ico</ApplicationIcon>
+        <Authors>Anders Hesselbom</Authors>
+        <Product />
+        <PackageProjectUrl>http://winsoft.se/</PackageProjectUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ChessEngine\ChessEngine.csproj" />
+      <ProjectReference Include="..\ChessGraphicsRenderer\ChessGraphicsRenderer.csproj" />
+    </ItemGroup>
+
+</Project>
