@@ -11,7 +11,7 @@ namespace ChessGraphicsRenderer
         private Size _boardSize;
         private Size _tileSize;
         private readonly PhysicalPositionList _physicalPositions;
-        public PhysicalPosition SelectedTile { get; set; }
+        public PhysicalPosition? SelectedTile { get; set; }
         public Point BoardPosition { get; set; }
 
         public Renderer(Size boardSize, Point boardPosition)
