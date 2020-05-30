@@ -1,4 +1,6 @@
-﻿namespace ChessEngine.Rules.PieceMoveRules
+﻿using ChessEngine.Extensions;
+
+namespace ChessEngine.Rules.PieceMoveRules
 {
     public class MoveRulesPawn : MoveRules
     {
@@ -33,7 +35,9 @@
             
             AddCapture(1, directionY, ref moveList);
 
-            AddEnPassant();
+            AddEnPassant(-1, directionY, ref moveList);
+            
+            AddEnPassant(1, directionY, ref moveList);
             
             return moveList;
         }
@@ -53,7 +57,7 @@
         {
             var oneStep = _position.PhysicalY + directionY;
             
-            if (oneStep >= 0 && oneStep < 8 && _board.PositionIsFree(_position.PhysicalX, oneStep))
+            if (oneStep.IsOnBoard() && _board.PositionIsFree(_position.PhysicalX, oneStep))
                 moveList.AddMove(_piece, _position, _position.PhysicalX, oneStep);
         }
 
@@ -63,13 +67,31 @@
 
             var side = _position.PhysicalX + directionX;
             
-            if (side >= 0 && side < 8 && !_board.PositionIsFree(side, oneStep))
+            if (side.IsOnBoard() && !_board.PositionIsFree(side, oneStep))
                 moveList.AddMove(_piece, _position, side, oneStep);
         }
 
-        private void AddEnPassant()
+        private void AddEnPassant(int directionX, int directionY, ref MoveList moveList)
         {
+            var neighbourX = _position.PhysicalX + directionX;
             
+            if (!neighbourX.IsOnBoard())
+                return;
+            
+            var neighbourPiece = _board.GetPieceUsingPhysicalCoordinates(directionX, _position.PhysicalY);
+
+            if (neighbourPiece == null)
+                return;
+
+            if (neighbourPiece.Color == _piece.Color)
+                return;
+
+            var targetY = _position.PhysicalY + directionY;
+
+            if (!targetY.IsOnBoard())
+                return;
+            
+            //TODO
         }
     }
 }

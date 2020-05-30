@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using ChessEngine.Extensions;
 
 namespace ChessEngine
 {
@@ -54,9 +55,9 @@ namespace ChessEngine
 
         public void SetPieceUsingPhysicalCoordinates(int x, int y, Piece? piece)
         {
-            if (x < 0 || x > 7)
+            if (!x.IsOnBoard())
                 throw new ArgumentOutOfRangeException();
-            if (y < 0 || y > 7)
+            if (!y.IsOnBoard())
                 throw new ArgumentOutOfRangeException();
             if (piece == null)
                 _pieces[x, y] = null;
@@ -71,9 +72,9 @@ namespace ChessEngine
         
         public Piece? GetPieceUsingPhysicalCoordinates(int x, int y)
         {
-            if (x < 0 || x > 7)
+            if (!x.IsOnBoard())
                 throw new ArgumentOutOfRangeException();
-            if (y < 0 || y > 7)
+            if (!y.IsOnBoard())
                 throw new ArgumentOutOfRangeException();
             return _pieces[x, y];
         }
