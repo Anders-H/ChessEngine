@@ -1,7 +1,6 @@
-﻿namespace ChessEngine
+﻿namespace ChessEngine;
+
+public interface IFriendlyString
 {
-    public interface IFriendlyString
-    {
-        string ToFriendlyString();
-    }
+    string ToFriendlyString();
 }

@@ -1,7 +1,6 @@
-﻿namespace ChessEngineTests
+﻿namespace ChessEngineTests;
+
+public class StorageTests
 {
-    public class StorageTests
-    {
         
-    }
 }

@@ -1,7 +1,6 @@
-﻿namespace ChessEngine
+﻿namespace ChessEngine;
+
+public class Storage
 {
-    public class Storage
-    {
         
-    }
 }

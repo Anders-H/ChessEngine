@@ -2,13 +2,17 @@
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <TargetFramework>net7.0-windows</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
         <ApplicationIcon>chess.ico</ApplicationIcon>
         <Authors>Anders Hesselbom</Authors>
         <Product />
         <PackageProjectUrl>http://winsoft.se/</PackageProjectUrl>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="chess.ico" />
+    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\ChessEngine\ChessEngine.csproj" />

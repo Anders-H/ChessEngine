@@ -1,9 +1,8 @@
-﻿namespace ChessEngine.Rules
+﻿namespace ChessEngine.Rules;
+
+public enum PositionDescription
 {
-    public enum PositionDescription
-    {
-        HomeUnmoved,
-        HomeMoved,
-        Other
-    }
+    HomeUnmoved,
+    HomeMoved,
+    Other
 }

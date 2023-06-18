@@ -1,8 +1,7 @@
-﻿namespace ChessEngine
+﻿namespace ChessEngine;
+
+public enum Color
 {
-    public enum Color
-    {
-        White,
-        Black
-    }
+    White,
+    Black
 }

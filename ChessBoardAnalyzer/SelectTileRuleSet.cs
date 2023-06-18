@@ -2,48 +2,47 @@
 using ChessEngine;
 using ChessGraphicsRenderer;
 
-namespace ChessBoardAnalyzer
+namespace ChessBoardAnalyzer;
+
+public class SelectTileRuleSet
 {
-    public class SelectTileRuleSet
+    private readonly Renderer _renderer;
+    private readonly Board _board;
+        
+    public SelectTileRuleSet(Renderer renderer, Board board)
     {
-        private readonly Renderer _renderer;
-        private readonly Board _board;
+        _renderer = renderer;
+        _board = board;
+    }
         
-        public SelectTileRuleSet(Renderer renderer, Board board)
+    public void Apply(int mouseX, int mouseY, ToolStripMenuItem menuItem)
+    {
+        var t = _renderer.GetTileAt(mouseX, mouseY);
+        if (t == null)
         {
-            _renderer = renderer;
-            _board = board;
+            menuItem.Enabled = false;
         }
-        
-        public void Apply(int mouseX, int mouseY, ToolStripMenuItem menuItem)
+        else
         {
-            var t = _renderer.GetTileAt(mouseX, mouseY);
-            if (t == null)
+            if (_renderer.SelectedTile == null)
             {
-                menuItem.Enabled = false;
+                menuItem.Enabled = true;
+                menuItem.Text = _board.GetPieceUsingPhysicalCoordinates(t) == null
+                    ? @"Select tile"
+                    : @"Select piece";
             }
             else
             {
-                if (_renderer.SelectedTile == null)
+                if (_renderer.SelectedTile.IsSameLocationAs(t))
+                {
+                    menuItem.Enabled = false;
+                }
+                else
                 {
                     menuItem.Enabled = true;
                     menuItem.Text = _board.GetPieceUsingPhysicalCoordinates(t) == null
                         ? @"Select tile"
                         : @"Select piece";
-                }
-                else
-                {
-                    if (_renderer.SelectedTile.IsSameLocationAs(t))
-                    {
-                        menuItem.Enabled = false;
-                    }
-                    else
-                    {
-                        menuItem.Enabled = true;
-                        menuItem.Text = _board.GetPieceUsingPhysicalCoordinates(t) == null
-                            ? @"Select tile"
-                            : @"Select piece";
-                    }
                 }
             }
         }

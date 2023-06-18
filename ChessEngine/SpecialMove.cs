@@ -1,11 +1,10 @@
-﻿namespace ChessEngine
+﻿namespace ChessEngine;
+
+public enum SpecialMove
 {
-    public enum SpecialMove
-    {
-        None,
-        CastlingShort,
-        CastlingLong,
-        EnPassant,
-        Promotion
-    }
+    None,
+    CastlingShort,
+    CastlingLong,
+    EnPassant,
+    Promotion
 }

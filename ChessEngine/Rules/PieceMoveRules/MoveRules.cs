@@ -1,7 +1,6 @@
-﻿namespace ChessEngine.Rules.PieceMoveRules
+﻿namespace ChessEngine.Rules.PieceMoveRules;
+
+public abstract class MoveRules
 {
-    public abstract class MoveRules
-    {
-        public abstract MoveList GetMoves();
-    }
+    public abstract MoveList GetMoves();
 }
