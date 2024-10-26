@@ -31,11 +31,13 @@ public class Board
         SetPieceUsingPhysicalCoordinates(5, 0, "b");
         SetPieceUsingPhysicalCoordinates(6, 0, "n");
         SetPieceUsingPhysicalCoordinates(7, 0, "r");
+
         for (var x = 0; x < 8; x++)
         {
             SetPieceUsingPhysicalCoordinates(x, 1, "p");
             SetPieceUsingPhysicalCoordinates(x, 6, "P");
         }
+        
         SetPieceUsingPhysicalCoordinates(0, 7, "R");
         SetPieceUsingPhysicalCoordinates(1, 7, "N");
         SetPieceUsingPhysicalCoordinates(2, 7, "B");
@@ -86,10 +88,10 @@ public class Board
 
     public void SetPieceUsingLogicalCoordinates(int x, int y, Piece? piece)
     {
-        if (x < 1 || x > 8)
+        if (x is < 1 or > 8)
             throw new ArgumentOutOfRangeException();
 
-        if (y < 1 || y > 8)
+        if (y is < 1 or > 8)
             throw new ArgumentOutOfRangeException();
 
         SetPieceUsingPhysicalCoordinates(x - 1, 8 - y, piece);
@@ -97,10 +99,10 @@ public class Board
 
     public Piece? GetPieceUsingLogicalCoordinates(int x, int y)
     {
-        if (x < 1 || x > 8)
+        if (x is < 1 or > 8)
             throw new ArgumentOutOfRangeException();
 
-        if (y < 1 || y > 8)
+        if (y is < 1 or > 8)
             throw new ArgumentOutOfRangeException();
 
         return GetPieceUsingPhysicalCoordinates(x - 1, 8 - y);

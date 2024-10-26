@@ -138,9 +138,9 @@ public class Piece : IFriendlyString
     public string ToFriendlyString() =>
         $"{ColorAsFriendlyString()} {SymbolAsFriendlyString().ToLower()}";
         
-    public static implicit operator string(Piece p) =>
+    public static implicit operator string(Piece? p) =>
         p?.ToString() ?? "";
         
     public static implicit operator Piece(string s) =>
-        new Piece(s);
+        new(s);
 }

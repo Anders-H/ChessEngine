@@ -9,11 +9,13 @@ public class Position
     public int PhysicalX { get; }
     public int PhysicalY { get; }
         
-    public Position(string name)
+    public Position(string? name)
     {
         Name = (name ?? "").ToLower();
-        if (!Regex.IsMatch(Name, @"^[a-h][1-8]$"))
+
+        if (!Regex.IsMatch(Name, "^[a-h][1-8]$"))
             throw new ArgumentException();
+
         PhysicalX = Name[0] switch
         {
             'a' => 0,
@@ -26,6 +28,7 @@ public class Position
             'h' => 7,
             _ => throw new Exception()
         };
+
         PhysicalY = Name[1] switch
         {
             '8' => 0,
@@ -44,8 +47,10 @@ public class Position
     {
         if (physicalX < 0 || physicalX > 7)
             throw new ArgumentOutOfRangeException();
+
         if (physicalY < 0 || physicalY > 7)
             throw new ArgumentOutOfRangeException();
+        
         PhysicalX = physicalX;
         PhysicalY = physicalY;
         Name = $"{NameFromX(physicalX)}{NameFromY(physicalY)}";
@@ -82,9 +87,9 @@ public class Position
     public override string ToString() =>
         Name;
 
-    public static implicit operator string(Position p) =>
+    public static implicit operator string(Position? p) =>
         p?.ToString() ?? "";
         
     public static implicit operator Position(string s) =>
-        new Position(s);
+        new(s);
 }
